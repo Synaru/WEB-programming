@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Success{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab3/order/">< К Заказу</a></div>
+
+<h1>Ваш заказ на сумму {{total}} &#8381; успешно оплачен</h1>
+
+{%endblock%}

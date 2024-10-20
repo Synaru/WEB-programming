@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 2{%endblock%}
+
+{# Контент: #}
+{%block main%}
+      <div><a href="/lab2/">< К Меню</a></div>
+    <h1>Калькуляторный прикол</h1>
+    <div style="margin: 15px;">
+        {{a}}+{{b}} = {{a + b}}
+    </div>
+<div style="margin: 15px;">
+        {{a}}-{{b}} = {{a - b}}
+    </div>
+<div style="margin: 15px;">
+        {{a}}*{{b}} = {{a * b}}
+    </div>
+<div style="margin: 15px;">
+        {{a}}/{{b}} = {{a / b}}
+    </div>
+<div style="margin: 15px;">
+    {{a}}<sup>{{b}}</sup> = {{a ** b}}
+    </div>
+
+{%endblock%}

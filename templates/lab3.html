@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 3{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/">< К Списку работ</a></div>
+<h1>Привет, <span style="color: {{name_color}}">{{name}}</span>!</h1>
+<h1>Тема лабораторной - Формы (GET), cookie. Список сделанных страниц:</h1>
+
+<div style="margin: 9px;">
+    <a href="/lab3/cookies/">Куки</a>
+</div>
+<div style="margin: 9px;">
+    <a href="/lab3/clearCookies/">Удалить куки</a>
+</div>
+<div style="margin: 9px;">
+    <a href="/lab3/form1/">Форма 1</a>
+</div>
+<div style="margin: 9px;">
+    <a href="/lab3/order/">Заказ</a>
+</div>
+<div style="margin: 9px;">
+    <a href="/lab3/settings/">Настройки</a>
+</div>
+<div style="margin: 9px;">
+    <a href='/lab3/ticketOrder?default=default'>Билет</a>
+</div>
+
+{%endblock%}

@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 2{%endblock%}
+
+{# Контент: #}
+{%block main%}
+      <div><a href="/lab2/">< К Меню</a></div>
+      <h1>Библиотека:</h1>
+      {%for book in books%}
+        <div style="margin: 15px;">
+            {{loop.index}}&nbsp;<b>{{book.name}}</b>&nbsp;by&nbsp;{{book.author}},&nbsp;{{book.genre}},&nbsp;{{book.pages}}&nbsp;страниц
+        </div>
+{%endfor%}
+
+{%endblock%}

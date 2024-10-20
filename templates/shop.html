@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 2{%endblock%}
+
+{# Контент: #}
+{%block main%}
+      <div><a href="/lab2/">< К Меню</a></div>
+      <h1>Каталог:</h1>
+      {%for item in catalogue%}
+        <div class="student-flex-row" style="margin: 15px;">
+            <img style="width: 200px;" src="/static/item{{loop.index}}.jpg" alt="">
+            <div style="margin: 25px;">{{item.name}}</div>
+            <div style="margin: 25px;">{{item.desc}}</div>
+        </div>
+{%endfor%}
+
+{%endblock%}

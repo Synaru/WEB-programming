@@ -1,0 +1,21 @@
+.tree-image {
+    width: 100vh;
+}
+.student-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header {
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 64px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

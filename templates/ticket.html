@@ -1,0 +1,44 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Ticket{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab3">< К лабораторной 3</a></div>
+
+<h1>Билет:</h1>
+<div style="margin: 15px; padding: 12px; background-color: #edd8b9; border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); width: fit-content;">
+    <div style="margin-bottom: 12px; font-weight: bold;">
+        {%if age < 18 %}
+            Детский билет:
+        {%else%}
+            Билет:
+        {%endif%}
+        &nbsp;{{start}}&nbsp;-&nbsp;{{end}}&nbsp; Отправление: &nbsp;{{date}}
+    </div>
+    <div style="margin-bottom: 12px;">
+        Пассажир:&nbsp;{{fullName}}&nbsp;{{age}}&nbsp;лет
+    </div>
+    <div style="margin-bottom: 12px;">
+        Место:&nbsp;{{seat}}
+    </div>
+    <div style="margin-bottom: 12px; font-weight: bold;">
+        Опции:
+    </div>
+    <div style="margin-bottom: 12px; margin-left: 32px;">
+        Страховка: {{'Включено' if ensurance == "on" else 'Нет'}}
+    </div>
+    <div style="margin-bottom: 12px; margin-left: 32px;">
+        Багаж: {{'Включено' if luggage == "on" else 'Нет'}}
+    </div>
+    <div style="margin-bottom: 12px; margin-left: 32px;">
+        Постельное белье: {{'Включено' if bedsheets == "on" else 'Нет'}}
+    </div>
+    <div style="margin-bottom: 12px; font-weight: bold;">
+        Стоимость: {{total}}&nbsp;&#8381;
+    </div>
+</div>
+
+{%endblock%}

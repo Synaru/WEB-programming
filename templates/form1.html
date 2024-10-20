@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Формы{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab3/">< К лабораторной 3</a></div>
+{%if user%}
+  <h1>Привет {{user}}, Добро пожаловать! </h1>
+  <h1>Возраст: {{age}}</h1>
+  <h1>Пол: {{'Мужской' if sex == 'male' else 'Женский'}}</h1>
+{%else%}
+<h1>Пользователь</h1>
+{%endif%}
+
+<form>
+  <label>Введите имя:</label>
+  <span style="color: red;" class="error">{{errors.user}}</span>
+  <div>
+    <input type="text" placeholder="Как зовут?" name="user" value="{{user or ''}}">
+  </div>
+  <label>Введите возраст:</label>
+  <span style="color: red;" class="error">{{errors.age}}</span>
+  <div>
+    <input type="number" placeholder="Сколько лет?" name="age" value="{{age or ''}}">
+  </div>
+  <label>Пол:</label>
+  <div>
+    <select name="sex">
+      <option value="male" {{ sex == 'male' and 'selected' }}>Мужчина</option>
+      <option value="female" {{ sex == 'male' and 'selected' }}>Женщина</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Отправить</button>
+  </div>
+</form>
+
+{%endblock%}

@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 2{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/">< К Списку работ</a></div>
+<h1>Шаблоны. Тема лабораторной - шаблоны. Список сделанных страниц:</h1>
+<div style="margin: 9px;">
+    <a href="/lab2/flowers/list">Цветы</a>
+</div>
+<div style="margin: 9px;">
+    <a href="/lab2/flowers/add_flower/красный-горноцвет">Цветы добавление</a>
+</div>
+<div style="margin: 9px;">
+            <a href="/lab2/math">Выражения</a>
+</div>
+<div style="margin: 9px;">
+            <a href="/lab2/fruits">Фрукты</a>
+</div>
+<div style="margin: 9px;">
+            <a href="/lab2/filters">Фильтры</a>
+</div>
+<div style="margin: 9px;">
+            <a href="/lab2/calc/">Калькуляторное</a>
+</div>
+<div style="margin: 9px;">
+            <a href="/lab2/library/">Книги</a>
+</div>
+<div style="margin: 9px;">
+            <a href="/lab2/shop/">Магазин</a>
+</div>
+
+{%endblock%}

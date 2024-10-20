@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Ticket Order{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab3/">< К лабораторной 3</a></div>
+{% for error in errors%}
+    <div style="margin: 10px; color: red;">
+        {{error}}
+    </div>
+{%endfor%}
+<h1>Выберите опции поездки:</h1>
+
+<form action="/lab3/ticketOrder/">
+
+    <input style="text-color: red;" type="string" placeholder="Фамилия" name="surname">
+    <input type="string" placeholder="Имя" name="name">
+    <input type="string" placeholder="Отчество" name="patronym">
+    <input type="number" placeholder="Возраст" name="age">
+
+    <h2>Поездка:</h2>
+    <h3>Основное:</h3>
+    <label>
+      <select name="start">
+        <option value="" selected>Пункт отправления</option>
+        <option value="Novosibirsk">Новосибирск</option>
+        <option value="Derevnevo">Деревнево</option>
+        <option value="Poselkovo">Поселково</option>
+      </select>
+    </label>
+    <label>
+      <select name="end">
+        <option value="" selected>Пункт назначения</option>
+        <option value="Novosibirsk">Новосибирск</option>
+        <option value="Derevnevo">Деревнево</option>
+        <option value="Poselkovo">Поселково</option>
+      </select>
+    </label>
+    <label>
+    <input type="date" placeholder="Дата отправления" name="date"></label>
+    <label>
+      <select name="seat">
+        <option value="" selected>Место в вагоне</option>
+        <option value="bottom">Нижнее</option>
+        <option value="top">Верхнее</option>
+        <option value="bottom-side">Нижнее-Боковое (+100 &#8381;)</option>
+        <option value="top-side">Верхнее-Боковое (+100 &#8381;)</option>
+      </select>
+    </label>
+
+    <h3>Опции:</h3>
+    <input type="checkbox" name="ensurance">Страховка (+150 &#8381;)
+    <input type="checkbox" name="luggage">Багаж (+250 &#8381;)
+    <input type="checkbox" name="bedsheets">Постельное белье (+75 &#8381;)
+
+    <div style="margin-top: 15px;">
+    <button type="submit">Заказать</button>
+    </div>
+</form>
+
+{%endblock%}
