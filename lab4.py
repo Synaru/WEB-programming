@@ -120,7 +120,6 @@ def login():
 
         name = ''
         for user in users:
-            print(user)
             if login == user['login']:
                 name = user['name']
         return render_template("login.html", authorized=authorized, login=login, name=name)
@@ -139,6 +138,35 @@ def login():
             return redirect('/lab4/login')
 
     return render_template("login.html", error='Не верный логин или пароль', authorized=False, login=login)
+
+@lab4.route("/lab4/fridge/", methods = ['GET','POST'])
+def fridge():
+    if request.method == 'GET':
+        return render_template('fridge.html')
+
+    message = ''
+    temp = request.form.get('temp')
+    temp = int(temp) if temp else None
+    if temp is None:
+        message = 'Ошибка: не задана температура'
+        color = "color: red;"
+    else:
+        if int(temp) < -12:
+            message = 'Ошибка: не удалось установить температуру — слишком низкое значение'
+            color = "color: red;"
+        if int(temp) > -1:
+            message = 'Ошибка: не удалось установить температуру — слишком высокое значение'
+            color = "color: red;"
+        if -12 <= int(temp) < -9:
+            message = f'Установлена температура: {temp}°С ❄❄❄'
+            color = "color: blue;"
+        if -8 <= int(temp) < -5:
+            message = f'Установлена температура: {temp}°С ❄❄'
+            color = "color: blue;"
+        if -4 <= int(temp) < -0:
+            message = f'Установлена температура: {temp}°С ❄'
+            color = "color: blue;"
+    return render_template('fridge.html', message=message, style=color, temp=temp)
 
 
 

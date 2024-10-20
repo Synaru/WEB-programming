@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Trees{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab4/">< К лабораторной 4</a></div>
+
+  <h1>Введите температуру холодильника</h1>
+<form method="post">
+  <div>
+    <label for="temp">Температура (&#8451;):</label>
+    <input id="temp" type="number" name="temp" value="{{temp}}">
+      <div style="{{style}}">{{message}}</div>
+  </div>
+
+</form>
+
+
+{%endblock%}
