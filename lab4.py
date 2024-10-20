@@ -98,6 +98,17 @@ def tree():
 
     return redirect('/lab4/tree')
 
+@lab4.route("/lab4/login", methods = ['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template("login.html", authorized=False)
+
+    login = request.form.get('login')
+    password = request.form.get('password')
+
+    return render_template("login.html", error='Успешная авторизация', login=login, authorized=True)
+    return render_template("login.html", error='Не верный логин или пароль', authorized=False)
+
 
 
 
