@@ -8,8 +8,17 @@
 <div><a href="/lab4/">< К лабораторной 4</a></div>
 <h1>Посажено деревьев: {{tree_count}}</h1>
 <form method="post">
-  <button name="operation" value="plant">Посадить дерево</button>
-  <button name="operation" value="cut">Срубить дерево</button>
+  {%if tree_count <= 0%}
+    <button name="operation" value="plant">Посадить дерево</button>
+    <button name="operation" value="cut" disabled>Срубить дерево</button>
+  {%elif tree_count >= 10%}
+    <button name="operation" value="plant" disabled>Посадить дерево</button>
+    <button name="operation" value="cut">Срубить дерево</button>
+  {%else%}
+    <button name="operation" value="plant">Посадить дерево</button>
+    <button name="operation" value="cut">Срубить дерево</button>
+  {%endif%}
+
 </form>
 
 {%endblock%}
