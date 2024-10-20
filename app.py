@@ -10,6 +10,7 @@ app.register_blueprint(lab2)
 app.register_blueprint(lab3)
 app.register_blueprint(lab4)
 app.config['EXPLAIN_TEMPLATE_LOADING'] = True
+app.secret_key = 'fnbhui3o27gf8o72379fgbh23gb8er02390hre028723h22'
 
 @app.route("/")
 def root():
