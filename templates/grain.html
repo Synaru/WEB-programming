@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Trees{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab4/">< К лабораторной 4</a></div>
+
+<h1>Введите заказ</h1>
+<form method="post">
+  <label>
+      <select name="item">
+        <option value="" selected>Выберите зерно</option>
+        <option value="yachmen">Ячмень</option>
+        <option value="oves">Овес</option>
+        <option value="pshenicca">Пшеница</option>
+        <option value="roz">Рожь</option>
+      </select>
+    </label>
+    <label>
+      <input type="number" id="weight" name="weight" placeholder="Кол-во">
+    </label>
+</form>
+
+<div>{{message}}</div>
+<div>{{error}}</div>
+
+
+{%endblock%}

@@ -169,6 +169,52 @@ def fridge():
     return render_template('fridge.html', message=message, style=color, temp=temp)
 
 
+grains = [
+    {'name': 'yachmen', 'price': 12345, 'nameRu': 'Ячмень'},
+    {'name': 'oves', 'price': 8522, 'nameRu': 'Овес'},
+    {'name': 'pshenicca', 'price': 8722, 'nameRu': 'Пшеница'},
+    {'name': 'roz', 'price': 14111, 'nameRu': 'Рожь'}
+]
+
+@lab4.route("/lab4/grain/", methods = ['GET','POST'])
+def grain():
+    if request.method == 'GET':
+        return render_template('grain.html')
+
+    item = request.form.get('item')
+    weight = request.form.get('weight')
+
+    if item == '':
+        error = 'Выберите зерно'
+        return render_template('grain.html', error=error)
+
+    if weight is None or weight == '' or weight == "0":
+        error = 'Введите кол-во'
+        return render_template('grain.html', error=error)
+
+    if float(weight) > 500:
+        error = 'Такого объёма сейчас нет в наличии.'
+        return render_template('grain.html', error=error)
+
+    total = float(weight)
+
+    for _grain in grains:
+        if _grain['name'] == item:
+            total *= _grain['price']
+
+    if float(weight) > 50:
+        total *= 0.9
+        return render_template('grain.html', error='',
+                               message=f'Заказ успешно сформирован. Вы заказали зерно.Вес: {weight} т. Сумма к оплате: {total} руб. Скидка за объем - 10%')
+
+    return render_template('grain.html', error='',
+                           message=f'Заказ успешно сформирован. Вы заказали зерно.Вес: {weight} т. Сумма к оплате: {total} руб')
+
+
+
+
+
+
 
 
 
