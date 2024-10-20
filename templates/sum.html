@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Sum{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab4/">< К лабораторной 4</a></div>
+
+<h1>Сумма чисел</h1>
+{{x1}}+{{x2}} = {{result}}
+
+{%endblock%}

@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Div{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab4/">< К лабораторной 4</a></div>
+    {%if error%}
+        {{error}}
+    {%else%}
+        <h1>Возведенеие в степень</h1>
+        {{x1}}^{{x2}} = {{result}}
+    {%endif%}
+
+
+{%endblock%}
