@@ -98,6 +98,11 @@ def tree():
 
     return redirect('/lab4/tree')
 
+users = [
+    {'login': 'admin', 'password': 'admin'},
+    {'login': 'user', 'password': 'user'},
+]
+
 @lab4.route("/lab4/login", methods = ['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -106,7 +111,10 @@ def login():
     login = request.form.get('login')
     password = request.form.get('password')
 
-    return render_template("login.html", error='Успешная авторизация', login=login, authorized=True)
+    for user in users:
+        if login == user['login'] and password == user['password']:
+            return render_template("login.html", error='Успешная авторизация', login=login, authorized=True)
+
     return render_template("login.html", error='Не верный логин или пароль', authorized=False)
 
 
