@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 5{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/">< К Списку работ</a></div>
+<h1>Тема лабораторной - Flask и БД. Список сделанных страниц:</h1>
+
+<div style="margin: 9px; display: flex; flex-direction: row;">
+    <div style="border-radius: 4px; padding: 12px; margin: 6px; border: 2px solid black;"><a href="/lab5/login">Войти</a></div>
+    <div style="border-radius: 4px; padding: 12px; margin: 6px; border: 2px solid black;"><a href="/lab5/register">Регистрацияя</a></div>
+    <div style="border-radius: 4px; padding: 12px; margin: 6px; border: 2px solid black;"><a href="/lab5/list">Список статей</a></div>
+    <div style="border-radius: 4px; padding: 12px; margin: 6px; border: 2px solid black;"><a href="/lab5/create">Создать статью</a></div>
+    <div>{{name}}</div>
+
+
+</div>
+
+{%endblock%}

@@ -3,12 +3,15 @@ from lab1 import lab1
 from lab2 import lab2
 from lab3 import lab3
 from lab4 import lab4
+from lab5 import lab5
 
 app = Flask(__name__, template_folder='templates')
 app.register_blueprint(lab1)
 app.register_blueprint(lab2)
 app.register_blueprint(lab3)
 app.register_blueprint(lab4)
+app.register_blueprint(lab5)
+
 app.config['EXPLAIN_TEMPLATE_LOADING'] = True
 app.secret_key = 'fnbhui3o27gf8o72379fgbh23gb8er02390hre028723h22'
 
