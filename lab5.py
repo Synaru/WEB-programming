@@ -1,10 +1,11 @@
-from flask import Blueprint, render_template, redirect, url_for, request, make_response, session
+from flask import Blueprint, render_template, redirect, url_for, request, make_response, session, current_app
 from werkzeug.security import check_password_hash, generate_password_hash
 
 lab5 = Blueprint('lab5', __name__)
 import psycopg2
 from psycopg2.extras import RealDictCursor
-
+import sqlite3
+from os import path
 
 @lab5.route("/lab5/")
 def lab5index():
@@ -108,15 +109,21 @@ def create():
     return redirect('/lab5')
 
 def db_connect():
-    conn = psycopg2.connect(
-        host='127.0.0.1',
-        port='7400',
-        database='synaru',
-        user='synaru',
-        password='synaru'
-    )
-
-    cur = conn.cursor(cursor_factory = RealDictCursor)
+    if current_app.config['DB_TYPE'] == 'postgres':
+        conn = psycopg2.connect(
+            host='127.0.0.1',
+            port='7400',
+            database='synaru',
+            user='synaru',
+            password='synaru'
+        )
+        cur = conn.cursor(cursor_factory = RealDictCursor)
+    else:
+        dir_path = path.dirname(path.relpath(__file__))
+        db_path = path.join(dir_path, 'database.db')
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
 
     return conn, cur
 
