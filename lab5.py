@@ -26,11 +26,12 @@ def login():
     conn, cur = db_connect()
 
     if current_app.config['DB_TYPE'] == 'postgres':
-        cur.execute("SELECT * FROM users WHERE login = $s;", (login,))
+        cur.execute("SELECT * FROM users WHERE login = '$s';", (login,))
     else:
         cur.execute("SELECT * FROM users WHERE login = ?;", (login,))
 
     user = cur.fetchone()
+    print(user)
 
     if not user:
         db_close(conn, cur)
@@ -62,6 +63,7 @@ def register():
         cur.execute("SELECT login FROM users WHERE login='$s';", (login,))
     else:
         cur.execute("SELECT login FROM users WHERE login='?';", (login,))
+
     if cur.fetchone():
         db_close(conn, cur)
 
@@ -131,6 +133,7 @@ def create():
     return redirect('/lab5')
 
 def db_connect():
+    print(f"connecting to {current_app.config['DB_TYPE']} db")
     if current_app.config['DB_TYPE'] == 'postgres':
         conn = psycopg2.connect(
             host='127.0.0.1',
