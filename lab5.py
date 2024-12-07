@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request, make_response, session
+from werkzeug.security import check_password_hash, generate_password_hash
 
 lab5 = Blueprint('lab5', __name__)
 import psycopg2
@@ -23,6 +24,7 @@ def login():
 
     conn, cur = db_connect()
 
+
     cur.execute(f"SELECT * FROM users WHERE login = '{login}';")
     user = cur.fetchone()
 
@@ -30,7 +32,7 @@ def login():
         db_close(conn, cur)
         return render_template('login_lab5.html', error="Логин и\или пароль не верны")
 
-    if user['password'] != password:
+    if not check_password_hash(user['password'], password):
         db_close(conn, cur)
         return render_template('login_lab5.html', error="Логин и\или пароль не верны")
 
@@ -59,7 +61,8 @@ def register():
 
         return render_template('register_lab5.html', error="Такой пользователь уже есть")
 
-    cur.execute(f"INSERT INTO users (login, password) VALUES ('{login}','{password}');")
+    password_hash = generate_password_hash(password)
+    cur.execute(f"INSERT INTO users (login, password) VALUES ('{login}','{password_hash}');")
     db_close(conn, cur)
     return render_template('register_succ.html')
 
