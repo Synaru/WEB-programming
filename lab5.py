@@ -31,7 +31,6 @@ def login():
         cur.execute("SELECT * FROM users WHERE login = ?;", (login,))
 
     user = cur.fetchone()
-    print(user)
 
     if not user:
         db_close(conn, cur)
@@ -62,7 +61,7 @@ def register():
     if current_app.config['DB_TYPE'] == 'postgres':
         cur.execute("SELECT login FROM users WHERE login='$s';", (login,))
     else:
-        cur.execute("SELECT login FROM users WHERE login='?';", (login,))
+        cur.execute("SELECT login FROM users WHERE login='?';", [login])
 
     if cur.fetchone():
         db_close(conn, cur)
