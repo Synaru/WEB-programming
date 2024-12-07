@@ -54,7 +54,7 @@ def register():
 
     conn, cur = db_connect()
 
-    cur.execute(f"SELECT login FROM users WHERE login='${login}';")
+    cur.execute(f"SELECT login FROM users WHERE login='{login}';")
 
     if cur.fetchone():
         db_close(conn, cur)
@@ -72,9 +72,27 @@ def getlist():
     pass
 
 
-@lab5.route("/lab5/create")
+@lab5.route("/lab5/create", methods=['GET', 'POST'])
 def create():
-    pass
+    login=session.get('login')
+    if not login:
+        return redirect('/lab5/login')
+
+    if request.method == 'GET':
+        return render_template('lab5_create_article.html')
+
+    title = request.form.get('title')
+    article = request.form.get('article')
+
+    conn, cur = db_connect()
+
+    cur.execute(f"SELECT * FROM users WHERE login='{login}';")
+    login_id = cur.fetchone()["id"]
+
+    cur.execute(f"INSERT INTO articles (user_id, title, article_text) VALUES ({login_id},'{title}','{article}');")
+
+    db_close(conn, cur)
+    return redirect('/lab5')
 
 def db_connect():
     conn = psycopg2.connect(
