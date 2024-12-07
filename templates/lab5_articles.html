@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+
+{# Номер лаб раб: #}
+{%block lab%}Лабораторная работа 5{%endblock%}
+
+{# Контент: #}
+{%block main%}
+<div><a href="/lab5/">< К лаб 5</a></div>
+<h1>Все статьи</h1>
+<div style="width: 800px; margin-left: auto; margin-right: auto;">
+  {% for article in articles %}
+    <div>
+      <h2>{{article['title']}}</h2>
+      <div>{{article['article_text']}}</div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{%endblock%}
