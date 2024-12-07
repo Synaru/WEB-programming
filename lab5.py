@@ -9,7 +9,7 @@ from os import path
 
 @lab5.route("/lab5/")
 def lab5index():
-    return render_template("lab5.html", name=session.get('login'))
+    return render_template("lab5.html", name=session.get('login'), db=current_app.config['DB_TYPE'])
 
 
 @lab5.route("/lab5/login", methods=['GET', 'POST'])
@@ -133,7 +133,7 @@ def create():
     return redirect('/lab5')
 
 def db_connect():
-    print(f"connecting to {current_app.config['DB_TYPE']} db")
+
     if current_app.config['DB_TYPE'] == 'postgres':
         conn = psycopg2.connect(
             host='127.0.0.1',
