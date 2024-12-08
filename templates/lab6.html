@@ -23,13 +23,31 @@
             return response.json()
         }).then(function(data){
             const officeList = data.result;
+            const login = data.login;
+
+            if(login != ''){
+                const sumDiv = document.getElementById('rent-sum-display');
+                let sum = 0
+
+                for(let office of officeList){
+                    console.log(office.tenant)
+                    console.log(login)
+                    if(office.tenant == login){
+                        sum += office.price
+                    }
+                }
+
+                sumDiv.innerText = `Общая сумма аренды: ${sum} p.`
+            }
 
             const ul = document.getElementById('office-list');
             for(let office of officeList){
                 const li = document.createElement('li');
+                li.style = "width: 600px; display: flex; flex-direction: row; gap: 12px;";
                 li.innerText = `${office.number}: ${office.tenant || 'свободен'}`
 
                 const bookButton = document.createElement('button');
+                bookButton.style = "margin-left: auto;";
                 bookButton.innerText = 'Зарезервировать';
                 bookButton.onclick = function() {
                     book(office.number);
@@ -43,9 +61,16 @@
                 }
                 li.appendChild(cancelButton)
 
+                const price = document.createElement('div');
+                price.style = 'display: inline;'
+                price.innerText = `Цена: ${office.price} p.`;
+                price.onclick = function() {
+                    cancel(office.number);
+                }
+                li.appendChild(price)
+
                 ul.appendChild(li);
             }
-
         })
     }
 
@@ -116,6 +141,8 @@
     document.addEventListener('DOMContentLoaded', function(){
         getOfficeList();
     })
+
+
 </script>
 {% endblock %}
 
@@ -126,6 +153,8 @@
 <div>
     <h2>Список кабинетов</h2>
     <ul id="office-list"></ul>
+
+    <h2 id="rent-sum-display"></h2>
 </div>
 
 
