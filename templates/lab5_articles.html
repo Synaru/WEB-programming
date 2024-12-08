@@ -6,12 +6,26 @@
 {# Контент: #}
 {%block main%}
 <div><a href="/lab5/">< К лаб 5</a></div>
-<h1>Все статьи</h1>
+
 <div style="width: 800px; margin-left: auto; margin-right: auto;">
+  <h1>Все статьи</h1>
   {% for article in articles %}
-    <div>
+    <div style="border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); padding: 6px 18px 18px 18px;">
       <h2>{{article['title']}}</h2>
       <div>{{article['article_text']}}</div>
+      <div style="display: flex; flex-direction: row; margin-top: 18px; gap: 8px;">
+        <a style="text-decoration: none;" href="/lab5/deleteArticle?article={{article['id']}}">
+          <div style="background-color: #c73030; padding: 7px;
+          border-radius: 6px; color: white; font-weight: bold;
+          ">Удалить статью</div>
+
+        </a>
+        <a style="text-decoration: none;" href="/lab5/edit?article={{article['id']}}">
+          <div style="background-color: #e0dada; padding: 7px;
+          border-radius: 6px; color: black; font-weight: bold;
+          ">Редактировать статью</div>
+        </a>
+      </div>
     </div>
   {% endfor %}
 </div>

@@ -7,14 +7,17 @@
 {%block main%}
 <div><a href="/lab5/">< К лаб 5</a></div>
 <div style="width: 800px; margin-left: auto; margin-right: auto;">
-    <h1>Создание статьи</h1>
-    <form method="post">
+    <h1>Редактирование статьи</h1>
+    <form action="/lab5/edit?article={{article['id']}}" method="post">
         <div style="color: red; font-weight: bold;">{{error}}</div>
         <div style="width: 100%;">
-            <label>Название статьи: <input style="width: 100%;" type="text" name="title" maxlength="50"></label>
+            <label>Название статьи: <input style="width: 100%;" type="text" name="title" maxlength="50"
+            value="{{article['title']}}"
+            ></label>
         </div>
         <div>
-            <textarea style="width: 100%; margin-top: 17px; height: 300px;" name="article"></textarea>
+            <textarea style="width: 100%; margin-top: 17px; height: 300px;" name="article"
+            >{{article['article_text']}}</textarea>
         </div>
         <button type="submit">Сохранить</button>
     </form>
