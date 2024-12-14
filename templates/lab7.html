@@ -5,7 +5,21 @@
 
 {% block script %}
 <script src="{{url_for('static', filename='./lab7.js')}}"></script>
+<style>
+    .modal {
+    display: none;
+    padding: 24px;
+    position: fixed;
+    top: 200px;
+    left: 500px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    }
+</style>
 {% endblock %}
+
+
 
 {# Контент: #}
 {%block main%}
@@ -23,6 +37,27 @@
         </tr>
         <tbody id="film-list"></tbody>
     </table>
+    <div class="modal">
+        <label>
+            Название на русском:
+            <input type="text" id="title-ru">
+        </label><br>
+        <label>
+            Название на англ:
+            <input type="text" id="title">
+        </label><br>
+        <label>
+            Год выпуска:
+            <input type="number" id="year">
+        </label><br>
+        <label>
+            Описание:
+            <textarea id="description"></textarea>
+        </label><br>
+        <button onclick="sendFilm()">Добавить</button>
+        <button onclick="cancel()">Отмена</button>
+
+    </div>
 
 
     <script>
