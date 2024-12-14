@@ -15,15 +15,65 @@
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    width: 500px;
     }
 
     .error-message {
         color: red;
         font-weight: bold;
     }
+
+    button {
+        padding: 5px;
+        background-color: #4864a8;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    }
+
+    button.danger {
+        background-color: #b83e3e;
+    }
+
+    table {
+        border: none;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #3e61b8;
+        color: white;
+        font-weight: bold;
+    }
+
+    td {
+    padding: 5px;
+    }
+
+    .highlighted {
+        background-color: #d1d9ed;
+    }
+
+    .lower-value {
+        font-style: italic;
+    }
+
+    input {
+        width: 100%;
+    }
+    textarea {
+        width: 100%;
+    }
+
 </style>
 {% endblock %}
-
 
 
 {# Контент: #}
@@ -34,8 +84,8 @@
     <h2>Список фильмов</h2>
     <table>
         <tr>
-            <th>Название</th>
             <th>Название РУС</th>
+            <th>Название</th>
             <th>Год</th>
             <th>Описание</th>
             <th>Действие</th>
@@ -45,24 +95,24 @@
     <div class="modal">
         <input type="hidden" id="id">
         <label>
-            Название на русском:
+            Название на русском:<br>
             <input type="text" id="title-ru">
         </label><br>
         <label>
-            Название на англ:
+            Название на англ:<br>
             <input type="text" id="title">
         </label><br>
         <label>
-            Год выпуска:
+            Год выпуска:<br>
             <input type="number" id="year">
         </label><br>
         <label>
-            Описание:
+            Описание:<br>
             <textarea id="description"></textarea>
             <div id="description-error" class="error-message"></div>
         </label><br>
         <button onclick="sendFilm()">Добавить</button>
-        <button onclick="cancel()">Отмена</button>
+        <button class="danger" onclick="cancel()">Отмена</button>
 
     </div>
 

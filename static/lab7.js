@@ -9,15 +9,16 @@ function fillFilmList() {
         let content = ''
         let i = 0
         for(let film of films){
+        let rowTag = (i % 2 === 0) ? '' : 'highlighted'
             content += `
-                <tr>
-                    <td>${film.title}</td>
+                <tr class="${rowTag}">
                     <td>${film.title_ru}</td>
+                    <td class="lower-value">(${film.title})</td>
                     <td>${film.year}</td>
                     <td>${film.description}</td>
                     <td>
                         <button onClick="editFilm(${i})">Редактировать</button>
-                        <button onClick="deleteFilm(${i})">Удалить</button>
+                        <button class="danger" onClick="deleteFilm(${i})">Удалить</button>
                     </td>
                 </tr>
             `
