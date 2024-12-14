@@ -73,6 +73,6 @@ def add_film():
     if film['description'] == '':
         return {'description': 'Заполните описание'}, 400
     films.append(film)
-    return films[len(films-1)]
+    return films[len(films) - 1]
 
 

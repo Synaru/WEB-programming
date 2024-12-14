@@ -43,19 +43,16 @@ function showModal(){
     document.getElementById('description-error').innerText = '';
     document.querySelector('div.modal').style.display = 'block'
 }
-
 function hideModal(){
     document.querySelector('div.modal').style.display = 'none'
 }
-
 function cancel(){
     hideModal()
 }
-
 function addFilm() {
+    document.getElementById('id').value = '';
     showModal()
 }
-
 function sendFilm() {
     const id = document.getElementById('id').value
     const film = {
